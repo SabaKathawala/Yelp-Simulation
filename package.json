@@ -25,7 +25,8 @@
     "nodemon": "^1.18.4",
     "pug": "2.0.0-beta11",
     "rand-token": "^0.4.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "sshpk": "^1.14.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
