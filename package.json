@@ -1,0 +1,29 @@
+{
+  "name": "restaurant-reviews-fsociety",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-flash": "0.0.2",
+    "express-mysql-session": "^1.2.3",
+    "express-sanitized": "^0.5.1",
+    "express-session": "^1.15.6",
+    "googleapis": "^23.0.0",
+    "helmet": "^3.9.0",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.12.5",
+    "pug": "2.0.0-beta11",
+    "rand-token": "^0.4.0",
+    "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

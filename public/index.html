@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Landing Page - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="css/landing-page.min.css" rel="stylesheet">-->
+    <link href="css/landing-page.css" rel="stylesheet">
+    <!--link href="stylesheets/style.css" rel="stylesheet"-->
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">RReviews</a>
+        <div class="buttons">
+          <div id="notLogged">
+            <a class="btn btn-custom pull-right" data-toggle="modal" href="#signUpModal">Sign Up</a>
+            <a class="btn btn-custom pull-right" id="login" data-toggle="modal" href="#loginModal">Login</a>
+              <!--a class="btn btn-custom pull-right" id="google_login" data-toggle="modal" href="#google_loginModal">SignIn with Google</a-->
+          </div>
+            <div id="loggedIn" class="inactive">
+              <a class="btn btn-custom pull-right" id="logout" data-toggle="modal" href="#Logout">Logout </a>
+              <a class="btn btn-custom pull-right" id="writeReview"  data-toggle="modal" href="#WriteReview"> Write a review </a>
+               <a class="btn btn-custom btn-md pull-right" id="editpage" data-toggle="modal" href="#EditPage"> Edit Page </a>
+            </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Masthead -->
+    <header class="masthead text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h1 class="mb-5">Search for restaurants</h1>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+              <div class="form-row">
+                <div class="col-6 col-md-9 mb-2 mb-md-0">
+                  <input id = "restaurant_search" type="text" autocomplete="on" class="form-control form-control-lg" placeholder="Search for restaurants...">
+                </div>
+                <div class="col-6 col-md-9 mb-2 mb-md-0">
+                  <input id = "max_distance" type="text" autocomplete="on" class="form-control form-control-lg" placeholder="max distance(Miles)">
+                </div>
+                <div class="col-12 col-md-9">
+                  <button id = "submit_search_query" type="submit" class="btn btn-block btn-lg btn-custom">Go!</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="search_results"></section>
+
+
+    <!-- Login Modal Starts -->
+     <div class="modal" tabindex="-1" role="dialog" id="loginModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                    <label for="login_Email">Email address</label>
+                    <input type="text" class="form-control" id="login_Email" aria-describedby="username" placeholder="Enter username">
+                  </div>
+                  <div class="form-group">
+                    <label for="login_Password">Password</label>
+                    <input type="password" class="form-control" id="login_Password" placeholder="Password">
+                  </div>
+                  <button id="submit_login" type="submit" class="btn btn-custom">Login</button>
+              </form>
+              <div class="inactive" id="error2" style="color: red"></div>
+              <!--<h3>Or Login with</h3>-->
+              <!--<i class="fa fa-google"></i>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Login Modal Ends -->
+
+
+      <!-- Sign Up Modal Starts -->
+      <div class="modal" tabindex="-1" role="dialog" id="signUpModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Register</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <form>
+                  <div class="form-group">
+                    <label for="reg_Name">Name</label>
+                    <input type="text" class="form-control" id="reg_Name" aria-describedby="firstName" placeholder="Enter First Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="reg_Email">Email</label>
+                    <input type="email" class="form-control" id="reg_Email" aria-describedby="email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="reg_Password">Password</label>
+                    <input type="password" class="form-control" id="reg_Password" aria-describedby="password" placeholder="Enter password">
+                  </div>
+                  <button type="submit" class="btn btn-custom" id="submit_register">Register</button>
+                </form>
+              <div class="inactive" id="error" style="color: red"></div>
+               <!--<h3>Or Login with</h3>-->
+              <!--<i class="fa fa-google"></i>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sign Up Modal Ends -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/controller.js"></script>
+    <script type="text/javascript">
+        $('#loginModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        });
+
+        $('#signUpModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        });
+    </script>
+  </body>
+
+</html>

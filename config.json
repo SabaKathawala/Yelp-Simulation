@@ -1,0 +1,6 @@
+{
+  "host"     : "35.190.185.167",
+  "user"     : "app",
+  "password" : "iamawesome",
+  "database" : "yelp_db"
+}

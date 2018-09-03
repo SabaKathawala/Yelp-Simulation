@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>draggable demo</title>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- Custom styles for this template -->
+    <!--<link href="css/landing-page.min.css" rel="stylesheet">-->
+    <link href="css/landing-page.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="jquery-ui.min.css">-->
+    <style>
+
+        #review>div {
+            border : solid 2px black;
+            padding: 1em;
+            margin-bottom: 1em ;
+            /*width:600px;*/
+        }
+
+        .objects {
+            width: 50%;
+            /*height: auto;*/
+            /*background: #ccc;*/
+            display: block;
+            margin-top: 10px;
+            font-size:1em;
+            font-family: 'Arial Black';
+        }
+
+        #editButtons {
+            margin-top:1em;
+        }
+        #business {
+            margin: 2em 0 2em 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">RReviews</a>
+        <div class="buttons">
+            <div id="notLogged">
+                <a class="btn btn-custom pull-right" data-toggle="modal" href="#signUpModal">Sign Up</a>
+                <a class="btn btn-custom pull-right" id="login" data-toggle="modal" href="#loginModal">Login</a>
+            </div>
+            <div id="loggedIn" class="inactive">
+                <a class="btn btn-custom pull-right" id="logout" data-toggle="modal" href="#Logout">Logout </a>
+                <a class="btn btn-custom pull-right" id="writeReview"  data-toggle="modal" href="#writeReviewModal"> Write a review </a>
+
+                    <a class="btn btn-custom btn-md pull-right" id="editpage" data-toggle="modal" href="#EditPage"> Edit Page </a>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section id="business">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-md-8 col-xs-12 " id="editArea">
+                <!--<div  id="name" class="objects"><h1>Girl & the Goat</h1></div>-->
+                <!--<div id="rating" class="objects">R</div>-->
+                <!--<div id="photos" class="objects">P</div>-->
+
+                <!--<div id="address" class="objects">-->
+                <!--<h2>Address</h2>-->
+                <!--<p>809 W Randolph St-->
+                <!--Chicago, IL 60607</p>-->
+                <!--<p>b/t Green St & Halsted St-->
+                <!--West Loop, Near West Side </p>-->
+                <!--</div>-->
+                <!--<div id="open-hours" class="objects">-->
+                <!--<h2>Open Hours</h2>-->
+                <!--<ul>-->
+                <!--<li>Mon 	4:30 pm - 11:00 pm</li>-->
+                <!--<li>Tue 	4:30 pm - 11:00 pm 	Open now</li>-->
+                <!--<li>Wed 	4:30 pm - 11:00 pm</li>-->
+                <!--<li>Thu 	4:30 pm - 11:00 pm</li>-->
+                <!--<li>Fri 	4:30 pm - 12:00 am</li>-->
+                <!--<li>Sat 	4:30 pm - 12:00 am</li>-->
+                <!--<li>Sun 	4:30 pm - 11:00 pm</li>-->
+                <!--</ul>-->
+
+                <!--</div>-->
+                <!--<div id="review" class="objects">-->
+
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-md-3 col-md-4 col-xs-12" id="editColors">
+                <label for="cname">Select color for Name: </label>
+                <input class="" type="color" id="cname">
+                <label for="crating">Select color for Rating: </label>
+                <input class="" type="color" id="crating">
+                <label for="caddress">Select color for Address: </label>
+                <input class="" type="color" id="caddress">
+                <label for="creview">Select color for Review: </label>
+                <input class="" type="color" id="creview">
+                <label for="copen-hours">Select color for Open-Hours: </label>
+                <input class="" type="color" id="copen-hours">
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-md-4 col-md-4 col-xs-12" id="editButtons">
+                <button id="save" class="btn btn-custom">Save</button>
+                <button id="reset" class="btn btn-custom">Reset</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Login Modal Starts -->
+<div class="modal" tabindex="-1" role="dialog" id="loginModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="login_Email">Email address</label>
+                        <input type="text" class="form-control" id="login_Email" aria-describedby="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="login_Password">Password</label>
+                        <input type="password" class="form-control" id="login_Password" placeholder="Password">
+                    </div>
+                    <button id="submit_login" type="submit" class="btn btn-custom">Login</button>
+                </form>
+                <div class="inactive" id="error2" style="color: red"></div>
+                <!--<h3>Or Login with</h3>-->
+                <!--<i class="fa fa-google"></i>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Modal Ends -->
+
+<!-- Sign in with Google Modal Starts -->
+<div class="modal" tabindex="-1" role="dialog" id="google_loginModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Login with Google</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <button id="submit_googlelogin" type="submit" class="btn btn-custom">Sign In</button>
+                <!--<h3>Or Login with</h3>-->
+                <!--<i class="fa fa-google"></i>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sign in with google Modal Ends -->
+
+<!-- Sign Up Modal Starts -->
+<div class="modal" tabindex="-1" role="dialog" id="signUpModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="reg_Name">Name</label>
+                        <input type="text" class="form-control" id="reg_Name" aria-describedby="firstName" placeholder="Enter First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_Email">Email</label>
+                        <input type="email" class="form-control" id="reg_Email" aria-describedby="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_Password">Password</label>
+                        <input type="password" class="form-control" id="reg_Password" aria-describedby="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-custom" id="submit_register">Register</button>
+                </form>
+                <div class="inactive" id="error" style="color: red"></div>
+                <!--<h3>Or Login with</h3>-->
+                <!--<i class="fa fa-google"></i>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal Starts -->
+<div class="modal" tabindex="-1" role="dialog" id="writeReviewModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Write a Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="stars">Rate on a scale of 5</label>
+                        <input type="number" max="5" min="1" class="form-control" id="stars" aria-describedby="username" placeholder="/5">
+                    </div>
+                    <div class="form-group">
+                        <label for="review_text">Description</label>
+                        <textarea class="form-control" id="review_text" placeholder="description"></textarea>
+                    </div>
+                    <button id="submit_review" type="submit" class="btn btn-custom">Submit</button>
+                </form>
+                <div class="inactive" id="error2" style="color: red"></div>
+                <!--<h3>Or Login with</h3>-->
+                <!--<i class="fa fa-google"></i>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign Up Modal Ends -->
+
+</body>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/controller.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var styles = [];
+        let docHeight = $("#editArea").height();
+        let docWidth = $("#editArea").width();
+
+        $.each($(".objects"), function (key, value) {
+            let el = {};
+            //el['name'] = {};
+            el['name'] = $(value).attr("id");
+            el['r_top'] = ($(value).position().top)/docHeight;
+            el['r_left'] = ($(value).position().left)/docWidth;
+            styles.push(el);
+        });
+        console.log(Object.values(styles));
+        $("#editButtons").hide();
+        $("#editColors").hide();
+
+        var init = function () {
+            //retrieve the business id
+            // ajax call to retrieve present layout details
+            let b_id = window.location.search.split("=")[1];
+            $.ajax({
+                method: "GET",
+                url: "backend/layout",
+                data: { b_id: b_id }
+            }).done(function( data ) {
+                console.log(data);
+                var response = JSON.parse(data);
+                var loggedIn = response.loggedIn;
+                setisLoggedVisibilityStatus(loggedIn);
+                let wHeight = $("#editArea").height();
+                let wWidth = $("#editArea").width();
+                let i;
+                let layout = response.layout;
+                let restaurant = response.restaurant;
+                let hours = response.hours;
+                let reviews = response.reviews;
+
+                for(let i in layout) {
+                    let id = layout[i].name;
+                    let div = $('<div>');
+                    div.attr("id", id);
+                    div.attr("class", "objects");
+                    div.css("position", "relative");
+                    div.css("top", layout[i].r_top * wHeight);
+                    div.css("left", layout[i].r_left * wWidth);
+                    div.css("color", layout[i].color);
+                    switch(id) {
+                        case "name":
+                            let h1 = $('<h1>');
+                            h1.text(restaurant.name);
+                            div.append(h1);
+                            break;
+                        case "rating":
+                            div.text("Rating: ");
+                            for(j=0; j< restaurant.rating ; j++) {
+                                div.append("<i class='fa fa-star'></i>").css("color", layout[i].color);
+                            }
+
+                            break;
+                        case "address":
+                            div.text("Address: " + restaurant.location.address);
+                            div.append("Neighborhood: " + restaurant.location.neighborhood);
+                            break;
+                        case "open-hours":
+                            if(typeof hours === 'undefined') {
+                                div.text("We don't have the Open Hours :(");
+                            }
+                            else {
+                                div.text(hours);
+                            }
+
+                            break;
+                        case "review":
+                            for(j=0; j < reviews.length; j++) {
+                                let user = reviews[j].user;
+                                let rdiv = $('<div>');
+                                let p = $('<p>');
+                                p.text(user.name);
+                                rdiv.append(p);
+                                //p = $('<p>');
+                                //p.append(user.reviews + " ");
+                                //p.append(user.date + " " + user.fans + " " + user.u_rating);
+                                //rdiv.append(p);
+                                //div.append(rdiv);
+                                let review_info = reviews[j].review;
+                                //rdiv = $('<div>');
+                                p = $('<p>');
+                                for (k = 0; k < review_info.r_rating; k++) {
+                                    p.append("<i class='fa fa-star'></i>").css("color", layout[i].color);
+                                }
+                                rdiv.append(p);
+                                p = $('<p>');
+                                p.text(review_info.text);
+                                rdiv.append(p);
+                                div.append(rdiv);
+                            }
+                            break;
+                    }
+                    $('#editArea').append(div);
+                };
+
+            }).fail(function( status, data ) {
+
+            }).always(function( status, data ) {
+
+            });
+
+
+//            var styles = [];
+//            $.each($(".objects"), function (key, value) {
+//                let el = jQuery.extend(true, {}, element);
+//                el['name'] = $(value).attr("id");
+//                el['style']['lx'] = $(value).position().top;
+//                el['style']['ly'] = $(value).position().left;
+//                el['style']['rx'] = $(value).width();
+//                el['style']['height'] = $(value).height();
+//                styles.push(el);
+//            });
+//            console.log(JSON.stringify(Object.values(styles)));
+        }();
+
+        $("#submit_review").click(function () {
+            event.preventDefault();
+            let b_id = window.location.search.split("=")[1];
+            let stars = $("#stars").val();
+            let text = $("#review_text").val();
+            $.ajax({
+                method: "POST",
+                url: "backend/addReview",
+                data: {b_id: b_id, stars: stars, text: text}
+            }).done(function (data) {
+                alert("Thank you for the review");
+
+            }).fail(function (status, data) {
+                alert("We are having problems with our system. Please try again later");
+
+            }).always(function (status, data) {
+
+            });
+        });
+
+        $("#save").click(function () {
+            event.preventDefault();
+            var newStyles=[];
+            let docHeight = $('#editArea').height();
+            let docWidth = $('#editArea').width();
+            $.each($(".objects"), function(key, value){
+                let el = {};
+                el['name'] = $(value).attr("id");
+                el['y1'] = $(value).position().top;
+                el['x1'] = $(value).position().left;
+                el['y2'] = $(value).position().top + $(value).height();
+                el['x2'] = $(value).position().left + $(value).width();
+                el['r_top'] = ($(value).position().top)/docHeight;
+                el['r_left'] = ($(value).position().left)/docWidth;
+                el['color'] = $("#c"+$(value).attr("id")).val();
+                el['font'] = 'arial';
+                newStyles.push(el);
+            })
+            console.log(Object.values(newStyles));
+            if(findOverLaps(newStyles)){
+                alert("Your elements are overlapping. Please adjust them to remove overlaps.");
+                return;
+            }
+            else {
+                let b_id = window.location.search.split("=")[1];
+                $.ajax({
+                    method: "POST",
+                    url: "backend/saveLayout",
+                    data: { b_id: b_id , layout: JSON.stringify(newStyles) }
+                }).done(function( data ) {
+                    alert(data);
+                    window.location.reload();
+                }).fail(function( status, data ) {
+
+                }).always(function( status, data ) {
+
+                });
+
+                $("#editButtons").hide();
+                $("#editColors").hide();
+            }
+        });
+        $("#editpage").click(function() {
+            $("#editButtons").show();
+            $("#editColors").show();
+            $(".objects").draggable({
+                containment: $("#editArea")
+            }).css("background-color", "#eee")
+                .css("cursor","pointer")
+                .css("border","1px dotted black");
+        });
+
+    });
+    function findOverLaps(newStyles) {
+        for(let i = 0; i < newStyles.length-1; i++) {
+            for(let j = i+1; j < newStyles.length; j++) {
+                if(!(newStyles[i].x2 < newStyles[j].x1 ||
+                        newStyles[i].x1 > newStyles[j].x2 ||
+                        newStyles[i].y2 < newStyles[j].y1 ||
+                        newStyles[i].y1 > newStyles[j].y2)) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+
+    }
+
+
+    function setisLoggedVisibilityStatus(isLoggedIn) {
+        //Removing all previous settings
+        $("#loggedIn").removeClass('active');
+        $("#loggedIn").removeClass('inactive');
+        $("#notLogged").removeClass('active');
+        $("#notLogged").removeClass('inactive');
+
+        if(isLoggedIn === true) {
+            $("#loggedIn").addClass("active");
+            $("#notLogged").addClass('inactive');
+        }
+        else {
+            $("#loggedIn").addClass("inactive");
+            $("#notLogged").addClass('active');
+        }
+    }
+</script>
+</html>
