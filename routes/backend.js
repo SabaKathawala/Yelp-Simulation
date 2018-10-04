@@ -19,7 +19,7 @@ let configData = {
 };
 
 
-connection.connect();
+//connection.connect();
 /* Get the valid session data*/
 router.get('/init', function(req, res){
     var loggedIn = (req.session && req.session.token);
